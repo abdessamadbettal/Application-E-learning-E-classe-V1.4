@@ -7,15 +7,15 @@ if (isset($_POST['inscrir'])) {
     $username = $_POST['username'];
     $email1 = $_POST['email1'];
     $pas1 = $_POST['pas1'];
-   
+
 
     $query = "INSERT INTO comptes (username , email , passeword ) VALUES ('$username' , '$email1' , '$pas1' ) ";
     mysqli_query($connecter, $query);
-    // $_SESSION['message'] = "has ben aded avec seccus";
-    // $_SESSION['alert'] = "alert alert-success";
-    /* header('location: index.php');
+    $_SESSION['message'] = "your account has ben aded avec seccus";
+    $_SESSION['alert'] = "alert alert-success";
+    /* header('location: index.php');*/
     $_SESSION['message'] = "has ben added avec seccus";
-    $_SESSION['alert'] = "alert alert-success"; */
+    $_SESSION['alert'] = "alert alert-success";
 }
 
 // ! insertion pour le table de students
@@ -30,16 +30,16 @@ if (isset($_POST['save'])) {
     mysqli_query($connecter, $query);
     // $_SESSION['message'] = "has ben aded avec seccus";
     // $_SESSION['alert'] = "alert alert-success";
-    /* header('location: index.php');
+    /* header('location: index.php'); */
     $_SESSION['message'] = "has ben added avec seccus";
-    $_SESSION['alert'] = "alert alert-success"; */
+    $_SESSION['alert'] = "alert alert-success";
 }
 if (isset($_GET['delet'])) {
     $id = $_GET['delet'];
     $query = "DELETE FROM students WHERE $id = id";
     mysqli_query($connecter, $query);
-    // $_SESSION['message'] = "has ben deleted avec seccus";
-    // $_SESSION['alert'] = "alert alert-danger";
+    $_SESSION['message'] = "has ben deleted avec seccus";
+    $_SESSION['alert'] = "alert alert-danger";
 }
 if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
@@ -62,13 +62,9 @@ if (isset($_GET['edit'])) {
 
         $queri = "UPDATE students SET name = '$name' , email = '$email' , phone = '$phone' , enroll = '$enroll' , date = '$date'  WHERE id='$id'";
         mysqli_query($connecter, $queri);
-        // $_SESSION['message'] = "has ben added avec seccus";
-        // $_SESSION['alert'] = "alert alert-primary";
+        $_SESSION['message'] = "has ben modified avec seccus";
+        $_SESSION['alert'] = "alert alert-primary";
         // echo '<script>document.location.replace("index.php")</script>';
         header('location: ../student.php');
     }
-    // echo '<script>document.location.replace("index.php")</script>';
-
-
-
 }

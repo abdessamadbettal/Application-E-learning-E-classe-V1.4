@@ -1,5 +1,5 @@
 <?php
-// session_start();
+
 include 'crud.php';
 ?>
 <?php
@@ -26,14 +26,21 @@ if (!isset($_SESSION['username'])) {
           <h2 class="fw-bold">students lists</h2>
           <div>
             <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Ajouter un student
-    </button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Ajouter un student
+            </button>
             <?php include_once 'modalbootstrap.php' ?>
 
             <i class="bi bi-chevron-expand fs-3 text-info"></i>
           </div>
         </div>
+        <?php if (isset($_SESSION['message'])) : ?>
+          <div class="<?= $_SESSION['alert'] ?>">
+            <?php echo $_SESSION['message'];
+            unset($_SESSION['message']);
+            ?>
+          </div>
+        <?php endif ?>
         <div class="table-responsive ">
           <table class="table table-hover table-striped ">
             <tbody class="border-top-0">
@@ -52,9 +59,8 @@ if (!isset($_SESSION['username'])) {
               if (mysqli_num_rows($resultat) > 0) {
                 // $i = 0;
                 // while ($row = mysqli_fetch_assoc($resultat)) {
-                  foreach ($resultat as $row) {
-                    # code...
-                  
+                foreach ($resultat as $row) {
+
                   echo '<tr class="">
                 <td class="text-black "> <img src="img/username.png" alt=""></td>
                 <td class="text-black py-4">' . $row['name'] . '</td>
